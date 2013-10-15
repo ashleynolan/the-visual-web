@@ -44,7 +44,7 @@ $base-line-height              : round($base-font-size * $base-leading);
 $bold-font-weight             : bold;
 
 // Font stacks
-$sans-font-family             : "Helvetica Neue", Helvetica, Arial, sans-serif;
+$sans-font-family             : "Avenir LT W01 35 Light", Helvetica, Arial, sans-serif;
 $serif-font-family            : Georgia, "Times New Roman", Times, serif;
 $mono-font-family             : Menlo, Monaco, "Courier New", monospace;
 
@@ -52,7 +52,7 @@ $base-font-family             : $sans-font-family;
 $alt-font-family              : $serif-font-family;
 
 $headings-font-family         : inherit; // empty to use Kickoff default $base-font-family
-$headings-font-weight         : bold;    // instead of browser default, bold
+$headings-font-weight         : normal;    // instead of browser default, bold
 
 
 /*

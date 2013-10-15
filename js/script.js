@@ -1,56 +1,85 @@
 /*	Author:
-		TMW - (Author Name Here)
+		Ashley Nolan
 */
 
-// Create a closure to maintain scope of the '$' and TMW
-;(function (TMW, $) {
+'use strict';
 
-	$(function() {
-		// Any globals go here in CAPS (but avoid if possible)
+require.config({
 
-		// follow a singleton pattern
-		// (http://addyosmani.com/resources/essentialjsdesignpatterns/book/#singletonpatternjavascript)
+	baseUrl: "/js/",
 
-		TMW.Config.init();
-
-	});// END DOC READY
-
-
-	/* Optional triggers
-
-	// WINDOW.LOAD
-	$(window).load(function() {
-
-	});
-
-	// WINDOW.RESIZE
-	$(window).resize(function() {
-
-	});
-
-	*/
+	// make components more sensible
+	paths: {
+		font: 'components/require-plugins/font',
+		propertyParser: 'components/require-plugins/propertyParser'
+		//text: 'components/require-plugins/text',
+		//fastclick: 'components/fastclick/fastclick',
 
 
+		// underscore: 'components/underscore/underscore',
 
-	TMW.Config = {
-		variableX : '', // please don't keep me - only for example syntax!
+		// selectivizr: 'components/selectivizr/selectivizr',
+		// modernizr: 'components/modernizr/modernizr.min',
+		// transit: 'components/transit/transit-min',
+	},
 
-		init : function () {
-			console.debug('Kickoff is running');
-		}
-	};
+	shim: {
+		// 'underscore': {
+		// 	exports: '_'
+		// },
+		// 'modernizr': {
+		// 	exports: 'Modernizr'
+		// },
+		// 'transit': {
+		// 	deps: ['jquery']
+		// }
+	},
 
-	// Example module
-	/*
-	TMW.Ui = {
-		init : function() {
-			TMW.Ui.modal();
-		},
+	name: 'main'
+});
 
-		modal : function() {
+require([
+	'font!typekit, id:[spu0ljn]]',
+	'font!monotype, projectId:[7388dc95-e286-4126-9c26-6026374b9d93], version: [12345]'
+], function () {
 
-		}
-	};
-	*/
+	// Create a closure to maintain scope of TVW
+	;(function (TVW) {
 
-})(window.TMW = window.TMW || {}, jQuery);
+		// $(function() {
+		// 	// Any globals go here in CAPS (but avoid if possible)
+
+		// 	// follow a singleton pattern
+		// 	// (http://addyosmani.com/resources/essentialjsdesignpatterns/book/#singletonpatternjavascript)
+
+		// 	TVW.Config.init();
+
+		// });// END DOC READY
+
+
+
+		TVW.Config = {
+			variableX : '', // please don't keep me - only for example syntax!
+
+			init : function () {
+				console.debug('Kickoff is running');
+			}
+		};
+
+		// Example module
+		/*
+		TVW.Ui = {
+			init : function() {
+				TVW.Ui.modal();
+			},
+
+			modal : function() {
+
+			}
+		};
+		*/
+
+	})(window.TVW = window.TVW || {});
+
+});
+

@@ -9,6 +9,57 @@
    Masthead
    ========================================================================== */
 
+.page-title {
+	margin-bottom: 0;
+	border-bottom: 1px solid #000;
+
+	& + .text-intro {
+		margin-top: 30px;
+		padding-bottom: 30px;
+	}
+}
+	.page-title-sub {
+		position: relative;
+	}
+		.page-title-sub-text {
+			position: absolute;
+			top: 32px;
+			left: 107px;
+			background: #fff;
+			padding: 13px 1px 0;
+
+			font-family: 'p22-underground-pc';
+			@include font-size(28);
+			letter-spacing: 0;
+			font-weight: 600;
+			line-height: 1;
+		}
+
+.text-intro {
+	font-family: 'p22-underground-pc';
+	@include font-size(28);
+	font-weight: 300;
+
+	max-width: 560px;
+	margin: 0 auto;
+}
+
+	// .page-title-sub-text {
+	// 	position: absolute;
+	// 	top: 29px;
+	// 	left: 95px;
+	// 	background: #fff;
+	// 	padding: 13px 0 0;
+
+	// 	font-family: 'p22-underground-pc';
+	// 	@include font-size(20);
+	// 	letter-spacing: 0;
+	// 	font-weight: 600;
+	// 	line-height: 1;
+
+	// 	-webkit-transform: rotate(270deg);
+	// }
+
 
 
 

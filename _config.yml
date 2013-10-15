@@ -11,3 +11,5 @@ paginate: 8
 paginate_path: /page:num
 
 destination: ./the-visual-web
+
+baseurl: /the-visual-web
