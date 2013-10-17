@@ -4,7 +4,9 @@ The Visual Web
 A curated list of interaction and animation patterns from across the web. 
 
 ####Tech Stack
-- Jekyll
+- Node
+- Grunt
+- Assemble
  
 
 #### Getting started
