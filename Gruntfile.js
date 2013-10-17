@@ -2,7 +2,7 @@ module.exports = function (grunt) {
 
 	'use strict';
 
-	/* 
+	/*
 	   Javascript settings - Edit this section
 	   ========================================================================== */
 	/**
@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 	 * Specify your output directory
 	 */
 	var distDir = 'js/dist/';
-	
+
 	/**
 	 * Specify the name of your compiled JS file
 	 * which will be placed in the directory you define above
@@ -32,6 +32,7 @@ module.exports = function (grunt) {
 	 */
 	grunt.initConfig({
 		pkg: require('./package'),
+		site: grunt.file.readYAML('src/data/site.yml'),
 
 
 		/**
@@ -150,6 +151,13 @@ module.exports = function (grunt) {
 				files: [
 					'css/*.css'
 				]
+			},
+
+			assemble: {
+				files: [
+					'**/*'
+				],
+				tasks: ['newer:assemble']
 			}
 		},
 
@@ -188,16 +196,45 @@ module.exports = function (grunt) {
 				},
 
 			}
+		},
+
+		assemble: {
+			options: {
+				data: 'src/**/*.{json,yml}',
+				assets: '<%= site.destination %>/assets',
+				helpers: 'src/helpers/helper-*.js',
+				layoutdir: 'src/templates/layouts',
+				partials: ['src/templates/includes/**/*.hbs'],
+				flatten: true
+			},
+
+			site: {
+				// Target-level options
+				options: {layout: 'default.hbs'},
+				files: [
+					{ expand: true, cwd: 'src/templates/pages', src: ['*.hbs'], dest: '<%= site.destination %>/' }
+				]
+			}
+		},
+
+		readme: {
+			options: {
+				sep: '',
+				docs: ['docs/']
+			}
 		}
 	});
 
 	// Load some stuff
+	grunt.loadNpmTasks('grunt-readme');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-csso');
+	grunt.loadNpmTasks('assemble');
+	grunt.loadNpmTasks('grunt-newer');
 
 
 	/**
@@ -213,9 +250,9 @@ module.exports = function (grunt) {
 	 * run jshint, uglify and sass:dev
 	 */
 	// Default task
-	grunt.registerTask('default', ['jshint', 'uglify', 'sass:dev']);
+	grunt.registerTask('default', ['readme', 'jshint', 'uglify', 'sass:dev', 'newer:assemble']);
 
-	
+
 	/**
 	 * A task for development
 	 * run jshint, uglify and sass:dev

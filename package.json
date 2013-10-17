@@ -1,19 +1,19 @@
 {
-  "name": "Kickoff",
-  "title": "Kickoff",
-  "description": "A lightweight front-end framework for creating scalable, responsive sites",
-  "version": "3.1.0",
-  "homepage": "http://tmwagency.github.io/kickoff/",
+  "name": "the-visual-web",
+  "title": "The Visual Web",
+  "description": "A curated list of interaction and animation patterns from across the web.",
+  "version": "0.1.0",
+  "homepage": "ashleynolan.github.io/the-visual-web/",
   "author": {
-    "name": "Zander Martineau",
-    "url": "http://martineau.tv"
+    "name": "Ashley Nolan",
+    "url": "http://www.dragongraphics.co.uk"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/tmwagency/kickoff.git"
+    "url": "https://github.com/ashleynolan/the-visual-web.git"
   },
   "bugs": {
-    "url": "https://github.com/tmwagency/kickoff/issues"
+    "url": "https://github.com/ashleynolan/the-visual-web/issues"
   },
   "license": "MIT",
   "engines": {
@@ -27,7 +27,10 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-autoprefixer": "~0.3.0",
-    "grunt-csso": "~0.5.0"
+    "grunt-csso": "~0.5.0",
+    "assemble": "~0.4.13",
+    "grunt-newer": "~0.5.4",
+    "grunt-readme": "~0.1.11"
   },
   "keywords": []
 }
