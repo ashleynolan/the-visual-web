@@ -133,7 +133,7 @@ module.exports = function (grunt) {
 		watch: {
 			scss: {
 				files: ['scss/**/*.scss'],
-				tasks: ['sass:dev']
+				tasks: ['sass:dev', 'copy:css']
 				// tasks: ['sass:dev', 'autoprefixer:dist', 'csso']
 			},
 
@@ -143,7 +143,7 @@ module.exports = function (grunt) {
 					'js/*.js',
 					'js/libs/**/*.js'
 				],
-				tasks: ['uglify']
+				tasks: ['uglify', 'copy:js']
 			},
 
 			assemble : {
@@ -154,7 +154,7 @@ module.exports = function (grunt) {
 			livereload: {
 				options: { livereload: true },
 				files: [
-					'the-visual-web/*.html',
+					'dist/*.html',
 					'css/*.css'
 				]
 			}
@@ -168,7 +168,7 @@ module.exports = function (grunt) {
             },
 			server: {
 				options: {
-					base: 'the-visual-web'
+					base: 'dist'
 				}
 			}
 		},
@@ -235,6 +235,25 @@ module.exports = function (grunt) {
 			}
 		},
 
+		copy: {
+			dist: {
+				files: [
+					{ expand: true, cwd: './css', src: ['./**/*.*'], dest: 'dist/assets/css' },
+					{ expand: true, cwd: './js', src: ['./**/*.*'], dest: 'dist/assets/js' }
+				]
+			},
+			css: {
+				files: [
+					{ expand: true, cwd: './css', src: ['./**/*.*'], dest: 'dist/assets/css' }
+				]
+			},
+			js: {
+				files: [
+					{ expand: true, cwd: './js', src: ['./**/*.*'], dest: 'dist/assets/js' }
+				]
+			}
+		},
+
 		readme: {
 			options: {
 				sep: '',
@@ -255,6 +274,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-csso');
 	grunt.loadNpmTasks('assemble');
 	grunt.loadNpmTasks('grunt-newer');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 
 
 	/**
@@ -270,7 +290,7 @@ module.exports = function (grunt) {
 	 * run jshint, uglify and sass:dev
 	 */
 	// Default task
-	grunt.registerTask('default', ['readme', 'jshint', 'uglify', 'sass:dev', 'newer:assemble']);
+	grunt.registerTask('default', ['readme', 'jshint', 'uglify', 'sass:dev', 'newer:assemble', 'copy:dist']);
 
 
 	grunt.registerTask('server', function (target) {

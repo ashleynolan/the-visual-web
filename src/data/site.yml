@@ -4,4 +4,4 @@
 
 production: <%= production %>
 
-destination: ./the-visual-web
+destination: ./dist
