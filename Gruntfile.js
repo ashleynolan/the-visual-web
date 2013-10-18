@@ -146,20 +146,38 @@ module.exports = function (grunt) {
 				tasks: ['uglify']
 			},
 
+			assemble : {
+				files: ['src/templates/**/*.hbs'],
+				tasks: ['assemble']
+			},
+
 			livereload: {
 				options: { livereload: true },
 				files: [
+					'the-visual-web/*.html',
 					'css/*.css'
 				]
-			},
-
-			assemble: {
-				files: [
-					'**/*'
-				],
-				tasks: ['newer:assemble']
 			}
 		},
+
+		connect: {
+			options: {
+                port: 9000,
+                // change this to '0.0.0.0' to access the server from outside
+                hostname: 'localhost'
+            },
+			server: {
+				options: {
+					base: 'the-visual-web'
+				}
+			}
+		},
+
+		open: {
+            server: {
+                path: 'http://localhost:<%= connect.options.port %>'
+            }
+        },
 
 
 		/**
@@ -227,6 +245,8 @@ module.exports = function (grunt) {
 
 	// Load some stuff
 	grunt.loadNpmTasks('grunt-readme');
+	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-open');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -252,6 +272,20 @@ module.exports = function (grunt) {
 	// Default task
 	grunt.registerTask('default', ['readme', 'jshint', 'uglify', 'sass:dev', 'newer:assemble']);
 
+
+	grunt.registerTask('server', function (target) {
+        // if (target === 'dist') {
+        //     return grunt.task.run(['build', 'open', 'connect:keepalive']);
+        // }
+
+        grunt.task.run([
+            //'clean:server',
+            //'concurrent:server',
+            'connect',
+            'open',
+            'watch'
+        ]);
+    });
 
 	/**
 	 * A task for development
