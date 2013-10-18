@@ -6,7 +6,7 @@
 
 require.config({
 
-	baseUrl: "/js/",
+	baseUrl: "/assets/js/",
 
 	// make components more sensible
 	paths: {

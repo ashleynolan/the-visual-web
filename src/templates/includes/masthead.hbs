@@ -1,0 +1,12 @@
+<header class="masthead masthead-home">
+	<nav class="globalNav">
+		<a href="{{ site.baseurl}}"{% if page.navgroup == "home" %} class="is-active"{% endif %}>Overview</a>
+		<a href="{{ site.baseurl}}/directory/"{% if page.navgroup == "index" %} class="is-active"{% endif %}>Directory</a>
+		<a href="{{ site.baseurl}}/blog"{% if page.navgroup == "blog" %} class="is-active"{% endif %}>Updates</a>
+		<!-- <a href="https://github.com/tmwagency/the-visual-web/" class="github-link" target="_blank">View on Github</a> -->
+	</nav>
+
+	{% if page.navgroup != "home" %}
+		<h1>The Visual Web</h1>
+	{% endif %}
+</header>
