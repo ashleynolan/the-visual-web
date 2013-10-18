@@ -274,18 +274,17 @@ module.exports = function (grunt) {
 
 
 	grunt.registerTask('server', function (target) {
-        // if (target === 'dist') {
-        //     return grunt.task.run(['build', 'open', 'connect:keepalive']);
-        // }
-
         grunt.task.run([
-            //'clean:server',
-            //'concurrent:server',
             'connect',
             'open',
             'watch'
         ]);
     });
+
+	/*
+		NEED TO UPDATE DEV AND PROD GRUNT BUILDS AS THESE ARE JUST PLACEHOLDERS
+
+	 */
 
 	/**
 	 * A task for development
